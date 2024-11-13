@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "map.h"
 #include "stack.h"
-#include <time.h>
+#include "tree.h"
 
 int main() {
     srand(time(NULL)); // Allows us to generate random numbers with rand() each time the program runs
@@ -79,11 +80,13 @@ int main() {
     }
 
     // Test (displays the random moves selected)
-    for (int i=0; i<9; i++)
+    for (int i=0; i<5; i++)
     {
         printf("%d",rand_moves[i]);
     }
     printf("\n");
+
+    p_node pn = createNode(5, 4);
 
     /*
     // Displays the size of the map created (7x6 initially)

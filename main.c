@@ -66,24 +66,26 @@ int main() {
         moves_tab.values[i] = moves_tab.values[j];
         moves_tab.values[j] = temp;
     }
-    // Test
+    // Test (displays shuffled values)
     for (int i=0; i<moves_tab.nbElts;i++)
         printf("%d", moves_tab.values[i]);
     printf("\n");
 
     // Create a tab with the 9 random moves selected
     int rand_moves[9];
-    for (int i=0; i<9; i++)
+    for (int i=0; i<5; i++) // Testing with 5 moves first
     {
         rand_moves[i] = moves_tab.values[i];
     }
-    // Test
+
+    // Test (displays the random moves selected)
     for (int i=0; i<9; i++)
     {
         printf("%d",rand_moves[i]);
     }
     printf("\n");
 
+    /*
     // Displays the size of the map created (7x6 initially)
     printf("Map created with dimensions %d x %d\n", map.y_max, map.x_max);
 
@@ -104,7 +106,9 @@ int main() {
         }
         printf("\n");
     }
-    displayMap(map);
+    displayMap(map);*/
+
+    // Question : how do we set the initial position of the rover ?
 
     return 0;
 }

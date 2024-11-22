@@ -139,13 +139,28 @@ char *getMoveAsString(t_move move)
 {
     return _moves[move];
 }
-
+/*
 t_localisation move(t_localisation loc, t_move move)
 {
     t_localisation new_loc;
     new_loc.ori = rotate(loc.ori, move);
     new_loc = translate(loc, move);
     return new_loc;
+}
+*/
+t_localisation move(t_localisation loc, t_move move) {
+    t_localisation new_loc = loc; // Copie de la localisation actuelle
+
+    // Si le mouvement est une rotation
+    if (move == T_LEFT || move == T_RIGHT || move == U_TURN) {
+        new_loc.ori = rotate(loc.ori, move); // Mettre à jour l'orientation
+    }
+        // Si le mouvement est une translation
+    else {
+        new_loc = translate(loc, move); // Mettre à jour la position
+    }
+
+    return new_loc; // Retourner la nouvelle localisation
 }
 
 void updateLocalisation(t_localisation *p_loc, t_move m)

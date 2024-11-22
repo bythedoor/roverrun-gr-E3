@@ -4,6 +4,11 @@
 #include "stack.h"
 #include <time.h>
 #include "shuffle.h"
+#include "moves.h"
+#include "loc.h"
+#include "tree.h"
+#include "node.h"
+
 int main() {
     srand(time(NULL)); // Allows us to generate random numbers with rand() each time the program runs
     t_map map;
@@ -30,7 +35,7 @@ int main() {
     printf("\n");
 
     // Create a tab with the 9 random moves selected
-    int taille = 5;
+    int taille = 9;
     int* rand_moves = create_tab(moves_tab, taille);;
 
     // affichage
@@ -41,6 +46,16 @@ int main() {
     printf("\n");
 
 
+    t_node* test;
+    t_localisation loc_robot;
+    loc_robot.pos.x = 4; loc_robot.pos.y = 5;
+    loc_robot.ori = NORTH;
+    test->nbSons = taille+1;
+    test->depth = -1;
+    test->parent = NULL;
+    t_tree tree;
+
+    tree.root = create_tree(test, rand_moves, -1, taille, map, loc_robot);
 
 
     // Displays the size of the map created (7x6 initially)

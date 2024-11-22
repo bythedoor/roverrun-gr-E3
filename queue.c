@@ -23,16 +23,16 @@ t_queue createQueue(int size)
     return queue;
 }
 
-void enqueue(t_queue *p_queue, p_node node)
+void enqueue(t_queue *p_queue, t_position pos)
 {
     // the queue must not be full
     assert((p_queue->last - p_queue->first) < p_queue->size);
-    p_queue->values[(p_queue->last) % p_queue->size] = node;
+    p_queue->values[(p_queue->last) % p_queue->size] = pos;
     p_queue->last++;
     return;
 }
 
-p_node dequeue(t_queue *p_queue)
+t_position dequeue(t_queue *p_queue)
 {
     // the queue must not be empty
     assert(p_queue->last != p_queue->first);

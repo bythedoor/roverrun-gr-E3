@@ -5,14 +5,12 @@
 #ifndef UNTITLED1_QUEUE_H
 #define UNTITLED1_QUEUE_H
 #include "loc.h"
-#include "node.h"
-
 /**
  * @brief Structure for the queue of integers
  */
 typedef struct s_queue
 {
-    p_node *values;
+    t_position *values;
     int size;
     int last;
     int first;
@@ -31,13 +29,13 @@ t_queue createQueue(int);
  * @param value : the position to enqueue
  * @return none
  */
-void enqueue(t_queue *,p_node);
+void enqueue(t_queue *,t_position);
 
 /**
  * @brief Function to dequeue a value from the queue
  * @param p_queue : pointer to the queue
  * @return the value dequeued
  */
-p_node dequeue(t_queue *);
+t_position dequeue(t_queue *);
 
 #endif //UNTITLED1_QUEUE_H

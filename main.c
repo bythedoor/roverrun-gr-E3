@@ -16,8 +16,11 @@ int main() {
     map = createMapFromFile("../maps/example1.map");
 #endif
 
-    chooseRandMoves();
-
+    int* tab = chooseRandMoves(3);
+    for (int i=0; i<3; i++) {
+        printf("%d ", tab[i]);
+    }
+    /*
     // Displays the size of the map created (7x6 initially)
     printf("Map created with dimensions %d x %d\n", map.y_max, map.x_max);
 
@@ -38,7 +41,7 @@ int main() {
         }
         printf("\n");
     }
-    displayMap(map);
+    displayMap(map);*/
 
     return 0;
 }

@@ -21,3 +21,4 @@ p_node createNode(int cost)
     newNode->parent = NULL;
     return newNode;
 }
+

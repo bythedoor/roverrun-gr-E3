@@ -11,14 +11,18 @@ typedef  struct s_tree {
     p_node root;
 } t_tree, *p_tree;
 
-int** chooseRandMoves(int);
+int* chooseRandMoves(int);
 
 t_tree createEmptyTree();
 
-void createTree(p_tree pt, int, int, int, int);
-
-p_node findBestWay(p_tree, p_node);
+int isEmptyTree(p_tree);
 
 void freeTree(p_tree);
+
+void addNode(p_tree, int cost);
+
+void createTree();
+
+p_node findBestWay(p_tree, p_node);
 
 #endif //UNTITLED1_TREE_H

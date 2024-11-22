@@ -10,9 +10,9 @@
 
 /**
  * @brief Function to generate random moves
- * @return tab with all moves available
+ * @return pointer to tab with all moves available
  */
-int** chooseRandMoves(int nb) {
+int* chooseRandMoves(int nb) {
     srand(time(NULL)); // Allows us to generate random numbers with rand() each time the program runs
 
     // Initialisation of a stack with all the moves available
@@ -39,13 +39,13 @@ int** chooseRandMoves(int nb) {
     }
 
     // Create a tab with the random moves selected
-    int rand_moves[nb];
-    for (int i=0; i<5; i++) // Testing with 5 moves first
+    int *rand_moves = (int*) malloc(sizeof(int) * nb);
+    for (int i=0; i<nb; i++) // Testing with 5 moves first
     {
         rand_moves[i] = moves_tab.values[i];
     }
 
-    return &rand_moves;
+    return rand_moves;
 }
 
 /**
@@ -58,12 +58,20 @@ t_tree createEmptyTree(){
     return new_tree;
 }
 
-void createTree(p_tree pt, int val, int nbSons, int depth, int moves) {
-    p_node pn = createNode(val, nbSons, depth);
-    pt->root = pn;
+int isEmptyTree(p_tree tree) {
+    return(tree->root == NULL);
 }
 
+void freeTree(p_tree tree) {
+    free(tree);
+}
 
+void addNode(p_tree tree, int cost) {
+    p_node initNode = createNode(cost);
+    tree->root = initNode;
+}
+
+/*
 p_node findBestWay(p_tree tree, p_node node) {
     t_queue moves = createQueue(200);
     p_node temp = node;
@@ -79,4 +87,4 @@ p_node findBestWay(p_tree tree, p_node node) {
             }
         }
     }
-}
+}*/

@@ -4,6 +4,7 @@
 
 #include "tree.h"
 #include "node.h"
+#include "queue.h"
 
 t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map map, t_localisation loc){
 
@@ -30,19 +31,22 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
 
         t_localisation new_loc = move(new->localisation, curr_move);
 
-        printf("curr move : %s  %d\n", getMoveAsString(curr_move), curr_move);
-        printf("valide ??? %d\n", isValidLocalisation(new_loc.pos, 6, 7));
-        printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d\n",new->value = cost_actual(new_loc, map), new_loc.pos.x, new_loc.pos.y, new_loc.ori);
+        //printf("curr move : %s  %d\n", getMoveAsString(curr_move), curr_move);
+        //printf("valide ??? %d\n", isValidLocalisation(new_loc.pos, 6, 7));
+        //printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d\n",new->value = cost_actual(new_loc, map), new_loc.pos.x, new_loc.pos.y, new_loc.ori);
 
-        if (isValidLocalisation(new_loc.pos, 6, 7) == 1 &&  cost_actual(new_loc,map) <10000) {  //Check if the robot is out of the map or if the robot is in a hole
+        if (isValidLocalisation(new_loc.pos, 6, 7) == 1 &&  cost_actual(new_loc,map) <10000 && cost_actual(new_loc,map) != 0) {  //Check if the robot is out of the map or if the robot is in a hole
 
-            printf("Mouvement a venir: %s %d\n", getMoveAsString(curr_move), curr_move);
+            //printf("Mouvement a venir: %s %d\n", getMoveAsString(curr_move), curr_move);
             new->sons[i] = create_tree(new, curr_liste, deep + 1, nb_move - 1, map, new_loc); //creation the son
 
         }
         else{
+            if (cost_actual(new_loc,map) == 0){
+                printf("------------------------------TROUV2----------------------------------");
+            }
             new->sons[i] = NULL;
-            printf("-------------------------------------------------------IMPOSSIBLE, cout : %d  x =%d  y= %d", cost_actual(new_loc,map), new_loc.pos.x, new_loc.pos.y);
+            printf("IMPOSSIBLE, cout : %d  x =%d  y= %d", cost_actual(new_loc,map), new_loc.pos.x, new_loc.pos.y);
         }
 
         free(curr_liste);
@@ -78,3 +82,4 @@ int* new_list(int * list, int a, int nb_move_remaining){
     return new_list;
 
 }
+

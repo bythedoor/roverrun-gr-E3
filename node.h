@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "loc.h"
+#include "moves.h"
 
 typedef struct s_node{
     int value;   //valeur du noeud cad la valeur de la case sur laquelle est le robot
@@ -15,6 +16,7 @@ typedef struct s_node{
     int nbSons;  //nb de possibilités de mouvement suivant
     t_localisation localisation;
     struct s_node* parent;
+    t_move move;
 
 }t_node;
 

@@ -35,7 +35,7 @@ int main() {
     printf("\n");
 
     // Create a tab with the 9 random moves selected
-    int taille = 9;
+    int taille = 10;
     int* rand_moves = create_tab(moves_tab, taille);;
 
     // affichage
@@ -55,7 +55,8 @@ int main() {
     test->parent = NULL;
     t_tree tree;
 
-    tree.root = create_tree(test, rand_moves, -1, taille, map, loc_robot);
+    tree.root = create_tree(test, rand_moves, -1, taille, map, loc_robot, 0);
+
 
 
     // Displays the size of the map created (7x6 initially)

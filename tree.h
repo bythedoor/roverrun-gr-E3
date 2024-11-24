@@ -13,7 +13,7 @@ typedef struct s_tree
 } t_tree ;
 
 
-t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map map, t_localisation loc );
+t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map map, t_localisation loc, t_move move );
 
 int cost_actual(t_localisation loc, t_map map); // Return the cost of the case on which is the robot
 

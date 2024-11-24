@@ -6,13 +6,14 @@
 #include "node.h"
 #include "queue.h"
 
-t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map map, t_localisation loc){
+t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map map, t_localisation loc, t_move previous_move){
 
-    //Create a new node
-    t_node* new = createNode((root->nbSons)-1, deep+1, loc);
+    t_node* new = createNode((root->nbSons)-1, deep+1, loc);//Create a new node
+    new->move = previous_move;
 
     new->value = cost_actual(new->localisation, map); //calculate the cost of the square on which is the robot
     new->parent = root; //Initialisation of the parent of the new node
+
 
     printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d",new->value, new->localisation.pos.x, new->localisation.pos.y, new->localisation.ori);
     printf("\ndeep : %d\n",new->depth );
@@ -31,14 +32,9 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
 
         t_localisation new_loc = move(new->localisation, curr_move);
 
-        //printf("curr move : %s  %d\n", getMoveAsString(curr_move), curr_move);
-        //printf("valide ??? %d\n", isValidLocalisation(new_loc.pos, 6, 7));
-        //printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d\n",new->value = cost_actual(new_loc, map), new_loc.pos.x, new_loc.pos.y, new_loc.ori);
-
         if (isValidLocalisation(new_loc.pos, 6, 7) == 1 &&  cost_actual(new_loc,map) <10000 && cost_actual(new_loc,map) != 0) {  //Check if the robot is out of the map or if the robot is in a hole
 
-            //printf("Mouvement a venir: %s %d\n", getMoveAsString(curr_move), curr_move);
-            new->sons[i] = create_tree(new, curr_liste, deep + 1, nb_move - 1, map, new_loc); //creation the son
+            new->sons[i] = create_tree(new, curr_liste, deep + 1, nb_move - 1, map, new_loc, curr_move); //creation the son
 
         }
         else{
@@ -82,4 +78,5 @@ int* new_list(int * list, int a, int nb_move_remaining){
     return new_list;
 
 }
+
 

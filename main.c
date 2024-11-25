@@ -81,5 +81,13 @@ int main() {
     }
     displayMap(map);
 
+    t_node* minLeaf = findMinLeaf(tree.root);    // fontion pour trouver la feuille avec la valeur minimale
+
+    if (minLeaf != NULL) {
+        FindPathToLeaf(minLeaf);    //affichage du chemin 
+    } else {
+        printf("No valid leaf found in the tree.\n");
+    }
+
     return 0;
 }

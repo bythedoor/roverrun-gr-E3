@@ -23,6 +23,11 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
         return new;
     }
 
+    new->sons = (t_node**)malloc(new->nbSons * sizeof(t_node*));    //
+    for (int i = 0; i < new->nbSons; i++) { 
+        new->sons[i] = NULL; 
+    }
+    
     new->sons = (t_node**)malloc(new->nbSons * sizeof(t_node*));
 
     for (int i = 0; i < nb_move; i++) {  //Loop creating all the nodes of the new node
@@ -47,7 +52,7 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
 
         free(curr_liste);
     }
-
+    return new;
 }
 
 
@@ -79,4 +84,89 @@ int* new_list(int * list, int a, int nb_move_remaining){
 
 }
 
+t_node* findMinLeaf(t_node* root) {
+    if (root == NULL) {
+        return NULL;    // Cas arbre vide
+    }
+
+    if (root->nbSons == 0 || root->sons == NULL) {      // Case where the node is a leaf
+        return root;
+    }
+
+    t_node* minLeaf = NULL;     // Initialise the sheet with the smallest value
+    int minValue = INT_MAX;     // Initialise with a max value for comparison
+
+    for (int i = 0; i < root->nbSons; i++) {        // Browse all the sons
+        if (root->sons[i] != NULL) {
+            t_node* candidate = findMinLeaf(root->sons[i]);     // Find the mini leaf for this sub-tree
+            if (candidate != NULL && candidate->value < minValue) {
+                minValue = candidate->value;
+                minLeaf = candidate;
+            }
+        }
+    }
+
+    if (minLeaf != NULL && root->depth == 0) {      // Display of node information with smaller value
+        printf("\n\nFound leaf with minimum value:\n");
+        printf("Value: %d\t", minLeaf->value);
+        printf("Depth: %d\t", minLeaf->depth);
+        printf("Coordinates: [%d][%d]\t", minLeaf->localisation.pos.x, minLeaf->localisation.pos.y);
+        printf("Orientation: %d\n\n", minLeaf->localisation.ori);
+    }
+    return minLeaf; // Turn over the sheet with smaller value
+}
+
+
+void FindPathToLeaf(t_node* targetLeaf) {
+
+    if (targetLeaf == NULL) {
+        printf("Target leaf is NULL.\n");
+        return;
+    }
+
+    t_move* tab_moves = malloc(targetLeaf->depth * sizeof(t_move)); // Dynamic allocation according to depth
+    if (tab_moves == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    t_node *curr = targetLeaf;
+    for (int i = targetLeaf->depth - 1; i >= 0; i--) {      // go from the leaf to the root
+        tab_moves[i] = curr->move;
+        curr = curr->parent;
+    }
+
+    printf("Path from root to leaf:\n");
+    for (int i = 0; i < targetLeaf->depth; i++) {
+        displayMoves(tab_moves, i+1);
+    }
+    free(tab_moves);
+}
+
+void displayMoves(t_move tab_moves[],int i) {
+    switch (tab_moves[i]) {
+        case F_10:
+            printf("Move %d: Forward 10 m\n", i);
+            break;
+        case F_20:
+            printf("Move %d: Forward 20 m\n", i);
+            break;
+        case F_30:
+            printf("Move %d: Forward 30 m\n", i);
+            break;
+        case B_10:
+            printf("Move %d: Backward 10 m\n", i);
+            break;
+        case T_LEFT:
+            printf("Move %d: Turn left (+90)\n", i);
+            break;
+        case T_RIGHT:
+            printf("Move %d: Turn right (-90)\n", i);
+            break;
+        case U_TURN:
+            printf("Move %d: U-turn (180)\n", i);
+            break;
+
+    }
+}
 

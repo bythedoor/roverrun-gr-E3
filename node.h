@@ -12,10 +12,11 @@ typedef struct s_node {
     int nbSons; // Number of sons the node can have
     int depth; // The current dept of the node
     t_localisation loc; // Position and orientation of the robot
-    struct s_node *sons[9]; // Tab of all the sons addresses
+    t_move move;
+    struct s_node **sons; // Tab of all the sons addresses
     struct s_node *parent; // Address of the parent of the node
 } t_node, *p_node;
 
-p_node createNode(int);
+p_node createNode(int nb_sons, int depth, t_localisation localisation);
 
 #endif //UNTITLED1_NODE_H

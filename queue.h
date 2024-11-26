@@ -14,7 +14,7 @@ typedef struct s_queue
     int size;
     int last;
     int first;
-} t_queue;
+} t_queue, *p_queue;
 
 /**
  * @brief Function to create a queue

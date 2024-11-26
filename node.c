@@ -12,12 +12,12 @@
  * @param nb_sons : the number of sons the node will have
  * @return pointer to the new node
  */
-p_node createNode(int cost)
+p_node createNode(int nb_sons, int depth, t_localisation localisation)
 {
     p_node newNode = (p_node)malloc(sizeof(t_node));
-    newNode->cost = cost;
-    newNode->nbSons = 0;
+    newNode->nbSons = 3;
     newNode->depth = 0;
+    newNode->sons = (p_node)malloc(sizeof(p_node) * newNode->nbSons);
     newNode->parent = NULL;
     return newNode;
 }

@@ -15,15 +15,15 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
     new->parent = root; //Initialisation of the parent of the new node
 
 
-    printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d",new->value, new->localisation.pos.x, new->localisation.pos.y, new->localisation.ori);
-    printf("\ndeep : %d\n",new->depth );
+    //printf("Cost :  %d  Coordonnees : [%d][%d]   orientation : %d",new->value, new->localisation.pos.x, new->localisation.pos.y, new->localisation.ori); //Utiliser pour debug
+    //printf("\ndeep : %d\n",new->depth );  //Utiliser pour debug
 
 
     if (new->depth >= 5) {
         return new;
     }
 
-    new->sons = (t_node**)malloc(new->nbSons * sizeof(t_node*));    //
+    new->sons = (t_node**)malloc(new->nbSons * sizeof(t_node*));   
     for (int i = 0; i < new->nbSons; i++) { 
         new->sons[i] = NULL; 
     }
@@ -43,10 +43,10 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
         }
         else{
             if (cost_actual(new_loc,map) == 0){
-                printf("------------------------------TROUV2----------------------------------");
+                printf("------------------------------TROUV2----------------------------------"); // Savoir si on est arriver a la base
             }
             new->sons[i] = NULL;
-            printf("IMPOSSIBLE, cout : %d  x =%d  y= %d", cost_actual(new_loc,map), new_loc.pos.x, new_loc.pos.y);
+            //printf("IMPOSSIBLE, cout : %d  x =%d  y= %d", cost_actual(new_loc,map), new_loc.pos.x, new_loc.pos.y); //Pour debug
         }
 
         free(curr_liste);

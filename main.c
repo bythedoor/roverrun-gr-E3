@@ -17,9 +17,9 @@ int main() {
     // If either _WIN32 or _WIN64 is defined, it means we are on a Windows platform.
     // On Windows, file paths use backslashes (\), hence we use the appropriate file path for Windows.
 #if defined(_WIN32) || defined(_WIN64)
-    map = createMapFromFile("..\\maps\\example2.map");
+    map = createMapFromFile("..\\maps\\example1.map");
 #else
-    map = createMapFromFile("../maps/example2.map");
+    map = createMapFromFile("../maps/example1.map");
 #endif
 
     t_stack moves_tab = add_moves(100);
@@ -56,7 +56,6 @@ int main() {
     t_tree tree;
 
     tree.root = create_tree(test, rand_moves, -1, taille, map, loc_robot, 0);
-
 
 
     // Displays the size of the map created (7x6 initially)

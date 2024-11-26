@@ -19,7 +19,7 @@ int cost_actual(t_localisation loc, t_map map); // Return the cost of the case o
 
 void swap(int * list, int a); //Swap the first element of the list with another one given in the parameter
 
-int* new_list(int* list, int a, int nb_move_remaining); //Return
+int* new_list(int* list, int a, int nb_move_remaining); //Return enlebvant le mouvement fait par le robot
 
 t_node* findMinLeaf(t_node* root);    //trouver le noeud avec la val la plus petite
 

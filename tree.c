@@ -137,8 +137,8 @@ void FindPathToLeaf(t_node* targetLeaf) {
     }
 
     printf("Path from root to leaf:\n");
-    for (int i = 0; i < targetLeaf->depth; i++) {
-        displayMoves(tab_moves, i+1);
+    for (int i = targetLeaf->depth - 1; i >= 0; i--) {      
+        displayMoves(tab_moves, targetLeaf->depth - i - 1); 
     }
     free(tab_moves);
 }

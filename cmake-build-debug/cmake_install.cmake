@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/elias/CLionProjects/MARC-master
+# Install script for directory: C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/elias/CLionProjects/MARC-master/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

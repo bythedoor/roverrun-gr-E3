@@ -17,9 +17,9 @@ int main() {
     // If either _WIN32 or _WIN64 is defined, it means we are on a Windows platform.
     // On Windows, file paths use backslashes (\), hence we use the appropriate file path for Windows.
 #if defined(_WIN32) || defined(_WIN64)
-    map = createMapFromFile("..\\maps\\example1.map");
+    map = createMapFromFile("..\\maps\\example2.map");
 #else
-    map = createMapFromFile("../maps/example1.map");
+    map = createMapFromFile("../maps/example2.map");
 #endif
 
     t_stack moves_tab = add_moves(100);
@@ -81,7 +81,7 @@ int main() {
     }
     displayMap(map);
 
-    t_node* minLeaf = findMinLeaf(tree.root);    // fontion pour trouver la feuille avec la valeur minimale
+    t_node* minLeaf = findMinLeaf(tree.root);    // fonction pour trouver la feuille avec la valeur minimale
 
     if (minLeaf != NULL) {
         FindPathToLeaf(minLeaf);    //affichage du chemin 

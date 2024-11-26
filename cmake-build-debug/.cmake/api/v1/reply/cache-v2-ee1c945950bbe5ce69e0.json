@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/elias/CLionProjects/MARC-master/cmake-build-debug"
+			"value" : "c:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -431,7 +431,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/elias/CLionProjects/MARC-master/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -503,7 +503,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/elias/CLionProjects/MARC-master"
+			"value" : "C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1147,7 +1147,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/elias/CLionProjects/MARC-master/cmake-build-debug"
+			"value" : "C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3/cmake-build-debug"
 		},
 		{
 			"name" : "untitled1_IS_TOP_LEVEL",
@@ -1171,7 +1171,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/elias/CLionProjects/MARC-master"
+			"value" : "C:/Users/Kimberley/Documents/[01] school/[01] efrei/P2/roverrun-gr-E3"
 		}
 	],
 	"kind" : "cache",

@@ -28,7 +28,6 @@ t_node* create_tree(t_node* root, int* liste_move, int deep, int nb_move, t_map 
         new->sons[i] = NULL; 
     }
     
-    new->sons = (t_node**)malloc(new->nbSons * sizeof(t_node*));
 
     for (int i = 0; i < nb_move; i++) {  //Loop creating all the nodes of the new node
 
